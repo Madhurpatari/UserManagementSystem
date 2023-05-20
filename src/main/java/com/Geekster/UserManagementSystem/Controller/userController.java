@@ -14,31 +14,18 @@ import java.util.List;
 public class userController {
     @Autowired
     UserService userService;
-    @PostMapping("/")
-    public String addUser(@Valid @RequestBody User user) {
+    @PostMapping
+    public User addUser(@RequestBody User user) {
         return userService.addUser(user);
     }
-    @GetMapping(value = "/")
+    @GetMapping
     public List<User> getAllUser(){
         return userService.getAllUser();
     }
 
     @GetMapping("/{userId}")
-    public User getUserById(@PathVariable String userId) {
+    public User getUserById(@PathVariable Integer userId) {
         return userService.getUserById(userId);
     }
-
-    @PutMapping(value = "/{userId}/{newName}")
-    public String updateUserById(@PathVariable String userId, @PathVariable String newName){
-        return userService.updateUserById(userId, newName);
-
-    }
-
-    @DeleteMapping("/{userId}")
-    public String deleteUser(@PathVariable String userId) {
-        return userService.deleteUser(userId);
-    }
-
-
 }
 

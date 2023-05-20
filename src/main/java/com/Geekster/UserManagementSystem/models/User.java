@@ -1,17 +1,24 @@
 package com.Geekster.UserManagementSystem.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
+import lombok.NoArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
 
 
 @Data
+@Entity
 @AllArgsConstructor
+@NoArgsConstructor
 public class User {
-    @NotEmpty(message = "UserId can't be  empty")
-    @NotNull
-    private  String userId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private  Integer userId;
 
     @NotEmpty(message = "User Name  can't be  empty")
     @Size(min=2, max=30)
